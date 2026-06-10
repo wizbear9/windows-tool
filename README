@@ -1,11 +1,11 @@
-windows-tool
+windows-tool (verified on Windows 11)
 ============
 
 /keyhook
 notepad.exe key hook
 
 hookdbg.cpp
-install hook on WriteFile. verified on Windows 11
+install hook on WriteFile. 
 
 injector.cpp
-dll injector. verified on Windows 11
+dll injector.
