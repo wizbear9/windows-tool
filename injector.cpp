@@ -1,7 +1,7 @@
 #include <Windows.h>
 #include <tchar.h>
 
-BOOL InjectDLL(DWORD dwPID, LPCTSTR szDllPath) {
+BOOL InjectDLL(LPCTSTR szDllPath, DWORD dwPID) {
 	HANDLE hProcess = NULL, hThread = NULL;
 	HMODULE hMod = NULL;
 	LPVOID pRemoteBuf = NULL;
@@ -43,14 +43,14 @@ BOOL InjectDLL(DWORD dwPID, LPCTSTR szDllPath) {
 
 int _tmain(int argc, TCHAR* argv[]) {
 	if (argc != 3) {
-		_tprintf(L"Usage: %s pid dll_path\n", argv[0]);
+		_tprintf(L"Usage: %s <dll_path> <pid>\n", argv[0]);
 		return 1;
 	}
 
-	if (InjectDLL((DWORD)_tstol(argv[1]), argv[2]))
-		_tprintf(L"InjectDll(\"%s\") suceess\n", argv[2]);
+	if (InjectDLL(argv[1], (DWORD)_tstol(argv[2])))
+		_tprintf(L"InjectDll(\"%s\") suceess\n", argv[1]);
 	else
-		_tprintf(L"InjectDll(\"%s\") failed\n", argv[2]);
+		_tprintf(L"InjectDll(\"%s\") failed\n", argv[1]);
 
 	return 0;
 }
